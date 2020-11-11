@@ -1,3 +1,16 @@
+//DICHIARO IL PACKAGE SOCKET.IO
+let socket = io();
+
+
+//AD OGNI CONNESSIONE DI UN CLIENT IL SERVER RICONOSCE
+//IL MESSAGGIO CONNECTION E NOI FACCIAMO PARTIRE LA FUNZIONE
+//newConnection
+socket.on("connect", newConnection);
+
+function newConnection(){
+  console.log("your id: " + socket.id)
+}
+
 function preload(){
   // put preload code here
 }
@@ -10,6 +23,17 @@ function setup() {
 
 function draw() {
   // put drawing code here
-  fill(20)
-  ellipse(mouseX, mouseY, 20)
+}
+
+
+function mouseMoved(){
+  ellipse(mouseX,mouseY,20);
+  //create the message
+  let message = {
+    x: mouseX,
+    y: mouseY,
+  };
+
+//send the message to the server
+socket.emit("mouse", message)
 }
