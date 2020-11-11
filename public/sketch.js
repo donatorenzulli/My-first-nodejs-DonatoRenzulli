@@ -1,5 +1,6 @@
 //DICHIARO IL PACKAGE SOCKET.IO
 let socket = io();
+let myColor = 'white';
 
 
 //AD OGNI CONNESSIONE DI UN CLIENT IL SERVER RICONOSCE
@@ -7,14 +8,23 @@ let socket = io();
 //newConnection
 socket.on("connect", newConnection);
 socket.on("mouseBroadcast", drawOtherMouse)
+socket.on("color", setColor);
+
+
+function setColor(assignedColor){
+  myColor = assignedColor;
+}
+
 
 function newConnection(){
   console.log("your id: " + socket.id)
 }
 
 function drawOtherMouse(data){
-  fill('red')
+  push()
+  fill(data.color)
   ellipse(data.x,data.y, 15)
+  pop()
 }
 
 function preload(){
@@ -33,12 +43,15 @@ function draw() {
 
 
 function mouseMoved(){
-  fill(255)
+  push()
+  fill(myColor)
   ellipse(mouseX,mouseY,15);
+  pop()
   //create the message
   let message = {
     x: mouseX,
     y: mouseY,
+    color: myColor,
   };
 
 //send the message to the server

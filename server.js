@@ -23,7 +23,8 @@ io.on("connection", newConnection);
 //NEW CONNECTION
 function newConnection(socket){
   console.log("new connection: " + socket.client.id)
-
+  // let clientColor = getRandomColor()
+  socket.emit("color", getRandomColor());
 
 //WHEN "MOUSE" COME FROM THE CLIENT, ESECUTE "mouseMessage"
   socket.on("mouse", mouseMessage)
@@ -32,4 +33,13 @@ function mouseMessage(dataReceived){
   console.log(socket.client.id, dataReceived)
   socket.broadcast.emit("mouseBroadcast", dataReceived);
   }
+}
+
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
 }
