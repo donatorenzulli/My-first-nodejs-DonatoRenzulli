@@ -19,13 +19,17 @@ let io = socket(server);
 //newConnection
 io.on("connection", newConnection);
 
+
+//NEW CONNECTION
 function newConnection(socket){
   console.log("new connection: " + socket.client.id)
 
+
+//WHEN "MOUSE" COME FROM THE CLIENT, ESECUTE "mouseMessage"
   socket.on("mouse", mouseMessage)
 
 function mouseMessage(dataReceived){
-  console.log(dataReceived)
-}
-
+  console.log(socket.client.id, dataReceived)
+  socket.broadcast.emit("mouseBroadcast", dataReceived);
+  }
 }
