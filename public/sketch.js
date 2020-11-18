@@ -16,19 +16,7 @@ function setColor(assignedColor){
 }
 
 
-function newPlayer(newPlayerColor){
-  console.log(newPlayerColor)
 
-  fill('purple')
-  rectMode(CENTER,CENTER);
-  noStroke()
-  rect(width/2,height/2,400,40)
-  fill(newPlayerColor)
-  textSize(30);
-  textAlign(CENTER,CENTER)
-  text('New player joined: '+ newPlayerColor, width/2,height/2)
-  pop()
-}
 
 
 function newConnection(){
@@ -55,6 +43,20 @@ function setup() {
   text('Welcome' + myColor, width/2,height/2)
 
   // put setup code here
+}
+
+function newPlayer(newPlayerColor){
+  console.log(newPlayerColor)
+
+  fill('purple')
+  rectMode(CENTER,CENTER);
+  noStroke()
+  rect(width/2,height/2,400,40)
+  fill(newPlayerColor)
+  textSize(30);
+  textAlign(CENTER,CENTER)
+  text('New player joined: '+ newPlayerColor, width/2,height/2)
+  pop()
 }
 
 function draw() {
