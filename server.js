@@ -24,9 +24,10 @@ io.on("connection", newConnection);
 function newConnection(socket){
   console.log("new connection: " + socket.client.id)
   // let clientColor = getRandomColor()
-  let clientColor = getRandomColor();
+  let clientColor = getRandomColor()
+  socket.emit("color", clientColor)
+  socket.broadcast.emit("newPlayer", clientColor)
 
-  socket.emit("color", clientColor);
 
 //WHEN "MOUSE" COME FROM THE CLIENT, ESECUTE "mouseMessage"
   socket.on("mouse", mouseMessage)

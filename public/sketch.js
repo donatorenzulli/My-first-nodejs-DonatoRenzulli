@@ -16,6 +16,21 @@ function setColor(assignedColor){
 }
 
 
+function newPlayer(newPlayerColor){
+  console.log(newPlayerColor)
+
+  fill('purple')
+  rectMode(CENTER,CENTER);
+  noStroke()
+  rect(width/2,height/2,400,40)
+  fill(newPlayerColor)
+  textSize(30);
+  textAlign(CENTER,CENTER)
+  text('New player joined: '+ newPlayerColor, width/2,height/2)
+  pop()
+}
+
+
 function newConnection(){
   console.log("your id: " + socket.id)
 }
@@ -33,7 +48,12 @@ function preload(){
 
 function setup() {
   createCanvas(windowWidth,windowHeight)
-  background('yellow')
+  background("#FFFF00")
+  fill(myColor)
+  textSize(30)
+  textAlign(CENTER)
+  text('Welcome' + myColor, width/2,height/2)
+
   // put setup code here
 }
 
