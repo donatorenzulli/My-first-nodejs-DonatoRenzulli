@@ -9,14 +9,16 @@ let myColor = 'white';
 socket.on("connect", newConnection);
 socket.on("mouseBroadcast", drawOtherMouse)
 socket.on("color", setColor);
+socket.on("newPlayer", newPlayer)
 
 
 function setColor(assignedColor){
   myColor = assignedColor;
+  fill(myColor)
+  textSize(30)
+  textAlign(CENTER)
+  text('Welcome ' + myColor, width/2,height/2)
 }
-
-
-
 
 
 function newConnection(){
@@ -26,7 +28,8 @@ function newConnection(){
 function drawOtherMouse(data){
   push()
   fill(data.color)
-  ellipse(data.x,data.y, 15)
+  noStroke()
+  ellipse(data.x,data.y, 20)
   pop()
 }
 
@@ -37,27 +40,11 @@ function preload(){
 function setup() {
   createCanvas(windowWidth,windowHeight)
   background("#FFFF00")
-  fill(myColor)
-  textSize(30)
-  textAlign(CENTER)
-  text('Welcome' + myColor, width/2,height/2)
+
 
   // put setup code here
 }
 
-function newPlayer(newPlayerColor){
-  console.log(newPlayerColor)
-
-  fill('purple')
-  rectMode(CENTER,CENTER);
-  noStroke()
-  rect(width/2,height/2,400,40)
-  fill(newPlayerColor)
-  textSize(30);
-  textAlign(CENTER,CENTER)
-  text('New player joined: '+ newPlayerColor, width/2,height/2)
-  pop()
-}
 
 function draw() {
   // put drawing code here
@@ -67,7 +54,9 @@ function draw() {
 function mouseMoved(){
   push()
   fill(myColor)
-  ellipse(mouseX,mouseY,15);
+  noStroke()
+  if (keyIsDown(65)){
+  ellipse(mouseX,mouseY,20);}
   pop()
   //create the message
   let message = {
@@ -77,5 +66,22 @@ function mouseMoved(){
   };
 
 //send the message to the server
+if(keyIsDown(65))
 socket.emit("mouse", message)
+}
+
+
+function newPlayer(newPlayerColor){
+  console.log(newPlayerColor)
+  y = height/2
+  fill('120')
+  rectMode(CENTER,CENTER);
+  noStroke()
+  rect(width/2,height/2,400,50)
+  fill(newPlayerColor)
+  textSize(30);
+  textAlign(CENTER,CENTER)
+  text('New player joined: '+ newPlayerColor, width/2,height/2)
+  pop()
+
 }
