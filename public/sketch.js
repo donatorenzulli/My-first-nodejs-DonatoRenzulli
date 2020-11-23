@@ -29,17 +29,19 @@ function drawOtherMouse(data){
   push()
   fill(data.color)
   noStroke()
-  ellipse(data.x,data.y, 20)
+  ellipse(data.x,data.y, 10)
   pop()
 }
 
 function preload(){
   // put preload code here
+    img = loadImage('tris.jpg');
 }
 
 function setup() {
   createCanvas(windowWidth,windowHeight)
-  background(0)
+  background(img)
+
 
 }
 
@@ -54,7 +56,7 @@ function mouseMoved(){
   fill(myColor)
   noStroke()
   if (keyIsDown(65)){
-  ellipse(mouseX,mouseY,20);}
+  ellipse(mouseX,mouseY,10);}
   pop()
   //create the message
   let message = {
