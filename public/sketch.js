@@ -39,10 +39,8 @@ function preload(){
 
 function setup() {
   createCanvas(windowWidth,windowHeight)
-  background("#FFFF00")
+  background(0)
 
-
-  // put setup code here
 }
 
 
