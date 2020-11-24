@@ -72,10 +72,10 @@ function mouseMoved(){
   };
 
 //send the message to the server
-if(keyIsDown(65))
+if(keyIsDown(65)){
 socket.emit("mouse", message)
 }
-
+}
 
 function newPlayer(newPlayerColor){
   console.log(newPlayerColor)
