@@ -1,6 +1,9 @@
 //DICHIARO IL PACKAGE SOCKET.IO
 let socket = io();
 let myColor = 'white';
+const urlString = window.location.href;
+const url = new URL(urlString);
+let nameP = url.searchParams.get('nome');
 
 
 //AD OGNI CONNESSIONE DI UN CLIENT IL SERVER RICONOSCE
@@ -40,14 +43,14 @@ function preload(){
 
 function setup() {
   createCanvas(windowWidth,windowHeight)
-  background(img)
-
 
 }
 
 
 function draw() {
   // put drawing code here
+    background(img)
+      text(nameP, mouseX,mouseY)
 }
 
 
@@ -57,6 +60,7 @@ function mouseMoved(){
   noStroke()
   if (keyIsDown(65)){
   ellipse(mouseX,mouseY,10);}
+
   pop()
   //create the message
   let message = {
