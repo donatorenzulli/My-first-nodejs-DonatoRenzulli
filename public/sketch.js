@@ -50,7 +50,7 @@ function setup() {
 function draw() {
   // put drawing code here
     background(img)
-      text(nameP, mouseX,mouseY)
+    text(nameP, mouseX,mouseY)
 }
 
 
@@ -67,6 +67,7 @@ function mouseMoved(){
     x: mouseX,
     y: mouseY,
     color: myColor,
+    text: nameP,
   };
 
 //send the message to the server
