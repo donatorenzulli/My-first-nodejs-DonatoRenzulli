@@ -6,7 +6,8 @@ let socket = require("socket.io");
 
 let app = express();
 
-let port = process.env.PORT || 8000;
+// let port = process.env.PORT || 8000;
+let port = 8000;
 
 let  server = app.listen(port);
 
